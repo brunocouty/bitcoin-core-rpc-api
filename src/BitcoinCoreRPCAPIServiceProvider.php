@@ -9,7 +9,10 @@ class BitcoinCoreRPCAPIServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-//        Publish the views
+//        Publish the files
+        $this->publishes([
+            __DIR__ . '/resources/config/bitcoin-api.php' => config_path('bitcoin-api.php'),
+        ]);
 //        $this->publishes([
 //            __DIR__.'/resources/views/' => resource_path('views'),
 //        ]);

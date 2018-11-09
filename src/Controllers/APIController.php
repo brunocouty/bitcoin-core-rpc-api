@@ -9,17 +9,21 @@ class APIController
 {
     public function auth()
     {
-        $conn = new Bitcoin('something',
-            'secret',
-            '198.199.76.171');
-        dump(request()->ip());
+        $conn = new Bitcoin(
+            config('bitcoin-api.rpc_user'),
+            config('bitcoin-api.rpc_password'),
+            config('bitcoin-api.rpc_host'),
+            config('bitcoin-api.rpc_port')
+        );
+        if ($conn === false) {
+            return "Error on connect.";
+        }
         return $conn;
     }
 
     public function test()
     {
-        dump($this->auth()->getnewaddress());
-        return "fim";
+        return $this->auth()->getnewaddress();
     }
 
     public function getAddress()
