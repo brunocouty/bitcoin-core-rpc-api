@@ -11,9 +11,7 @@ class APIController
     {
         $conn = new Bitcoin(
             config('bitcoin-api.rpc_user'),
-            config('bitcoin-api.rpc_password'),
-            config('bitcoin-api.rpc_host'),
-            config('bitcoin-api.rpc_port')
+            config('bitcoin-api.rpc_password')
         );
         if ($conn === false) {
             return "Error on connect.";
